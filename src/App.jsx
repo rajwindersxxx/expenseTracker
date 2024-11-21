@@ -5,7 +5,7 @@ const expenseRecord = [
   { name: 'buy keyboard', cost: '2334', date: '12-4-2023' },
   { name: 'buy keyboard', cost: '2334', date: '12-4-2023' },
   { name: 'buy keyboard', cost: '2334', date: '12-4-2023' },
-  { name: 'buy keyboard', cost: '2334', date: '12-4-2023' },
+
 ];
 export default function App() {
   return (
@@ -22,7 +22,6 @@ function BalanceTracker() {
       <BalanceStatus />
       <AddExpenseForm />
       <RenderRecord />
-      <Inputs />
     </div>
   );
 }
@@ -35,13 +34,9 @@ function BalanceStatus() {
         <h3 className="balance__spend">Balance spend : $234</h3>
         <h3 className="balance__income">Total Income : $234</h3>
       </div>
-      <div>
-        <input
-          className="balance__update hidden"
-          type="number"
-          placeholder="e.g $1000"
-        />
-        <button className="button width">add balance</button>
+      <div className="submit__button">
+        <Button>Update balance</Button>
+        <Button>Add expense</Button>
       </div>
     </div>
   );
@@ -49,7 +44,7 @@ function BalanceStatus() {
 
 function AddExpenseForm() {
   return (
-    <form className="expense__form">
+    <form className="expense__form ">
       <label>Expense Name:</label>
       <input type="text" placeholder="e.g Buy milk" />
       <label>Expense Cost:</label>
@@ -57,7 +52,7 @@ function AddExpenseForm() {
       <label>Balance Left:</label>
       <input type="number" placeholder="e.g 343$" disabled />
       <div className="submit__button">
-        <Button>Add expense</Button>
+        <Button>Submit</Button>
         <Button>Clear Inputs</Button>
         <Button>Delete all</Button>
       </div>
@@ -101,14 +96,6 @@ function RenderRecord() {
 // function BalanceHistory() {
 //   return <table></table>;
 // }
-
-function Inputs() {
-  return (
-    <div className="action__buttons">
-      <Button>Delete all</Button>
-    </div>
-  );
-}
 
 function Button({ children, onClick }) {
   return (

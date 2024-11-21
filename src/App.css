@@ -29,7 +29,7 @@
   border-radius: 3px;
   color: white;
   cursor: pointer;
-  transition: all .5s;
+  transition: all 0.5s;
 }
 .button:hover {
   background-color: #431407;
@@ -52,7 +52,8 @@ input {
   border-radius: 3px;
   padding: 24px;
   display: grid;
- grid-template-columns: 1fr auto;
+  grid-template-columns: 2fr 1fr;
+  margin-bottom: 12px;
 }
 
 .balance__status {
@@ -69,16 +70,15 @@ input {
 }
 .balance button {
   width: 100%;
-  margin-top: 12px;
 }
 
-
 .expense__form {
-  padding:  24px 0 24px 24px;
+  padding: 12px 0 12px 24px;
   display: grid;
   grid-template-columns: 130px 1fr auto;
   align-items: center;
   gap: 12px;
+  transition: all 0.5s;
 }
 .expense__form label {
   font-size: 20px;
@@ -89,14 +89,13 @@ input {
   display: flex;
   flex-direction: column;
   gap: 5px;
-  
-  
 }
 .records {
   border: 1px solid #431407;
   border-radius: 3px;
   height: 400px;
   overflow: auto;
+  margin-top: 24px;
 }
 .records table {
   font-family: arial, sans-serif;
@@ -112,21 +111,24 @@ th {
 th {
   background-color: #fb923c;
 }
-tr:hover{
+tr:hover {
   background-color: #fffbeb;
-  transition: all .3s;
-
+  transition: all 0.3s;
 }
 
-
-.action_icons img{
+.action_icons img {
   cursor: pointer;
 }
 
-.action__buttons{
-  padding: 24px  0;
+.action__buttons {
+  padding: 24px 0;
   display: flex;
   justify-content: end;
 }
 
-.zzyy
+.hidden {
+  opacity: 0;
+  height: 0;
+  padding: 0;
+  margin: 0;
+}
