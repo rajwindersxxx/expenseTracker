@@ -1,0 +1,105 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+
+.main {
+  background-color: #fed7aa;
+  width: 600px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  margin: auto;
+  border-radius: 3px;
+  padding: 24px;
+}
+.heading {
+  text-align: center;
+  padding: 24px;
+  text-transform: uppercase;
+  color: #7c2d12;
+}
+.balance {
+  border: 1px solid #7c2d12;
+  border-radius: 3px;
+  padding: 24px;
+}
+.balance__status {
+  display: flex;
+  justify-content: space-between;
+}
+.balance__total {
+  color: green;
+}
+.balance__spend {
+  color: red;
+}
+.buttons {
+  display: flex;
+  justify-content: end;
+  gap: 24px;
+}
+.button {
+  background-color: #7c2d12;
+  padding: 12px 24px;
+  width: 150px;
+  border: none;
+  border-radius: 3px;
+  color: white;
+  cursor: pointer;
+  transition: all .5s;
+}
+.button:hover {
+  background-color: #431407;
+}
+input {
+  padding: 0 7px;
+  border-radius: 3px;
+  border: 1px solid #7c2d12;
+}
+.expense__form {
+  padding:  24px 0 24px 24px;
+  display: grid;
+  grid-template-columns: 130px 1fr auto;
+  gap: 12px;
+}
+.expense__form label {
+  font-size: 20px;
+}
+.submit__button {
+  grid-column: -2/-1;
+  grid-row: 1/4;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  
+  
+}
+.records {
+  border: 1px solid #431407;
+  border-radius: 3px;
+  height: 400px;
+}
+.records table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+.records td,
+th {
+  border-bottom: 1px solid #9a3412;
+  text-align: center;
+  padding: 8px;
+}
+tr:not(:first-child):hover{
+  background-color: #fffbeb;
+}
+
+tr:first-child{
+  background-color: #fdba74;
+}
+.action_icons img{
+  cursor: pointer;
+ 
+}
