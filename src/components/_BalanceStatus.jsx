@@ -17,10 +17,10 @@ export function BalanceStatus({
     .filter(item => item.expenseCost > 0)
     .reduce((acc, item) => (acc += item.expenseCost), 0);
 
-  function handleKeyDown(e) {
-    if (e.key === 'Enter') {
+  function handleUpdateBalance(e) {
+    if (e.key === 'Enter' || e.type === 'click') {
       setShowBalanceInput(false);
-      onUpdateBalance('income', inputBalance, true);
+      onUpdateBalance('Income', inputBalance, true);
     }
   }
   return (
@@ -34,14 +34,16 @@ export function BalanceStatus({
       </div>
       <div className="submit__button">
         {showBalanceInput ? (
-          <input
-            type="number"
-            placeholder="Enter Balance"
-            className="balance__input"
-            onKeyDown={handleKeyDown}
-            value={inputBalance}
-            onChange={e => setInputBalance(Number(e.target.value))}
-          />
+          <div className="balance__input">
+            <input
+              type="number"
+              placeholder="Enter Balance"
+              onKeyDown={handleUpdateBalance}
+              value={inputBalance}
+              onChange={e => setInputBalance(Number(e.target.value))}
+            />
+            <img src="add.svg" alt="add icon" onClick={handleUpdateBalance} />
+          </div>
         ) : (
           <Button onClick={() => setShowBalanceInput(true)}>
             Update balance

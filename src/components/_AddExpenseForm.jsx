@@ -10,13 +10,13 @@ export function AddExpenseForm({ showForm, currBalance, onSubmit , onDeleteAllEn
   function handleForm(e) {
     e.preventDefault();
     onSubmit(expenseName, expenseCost);
-    setExpenseCost(0);
+    setExpenseCost('');
     setExpenseName('');
   }
 
   function clearFields(e) {
     e.preventDefault();
-    setExpenseCost(0);
+    setExpenseCost('');
     setExpenseName('');
   }
   return (

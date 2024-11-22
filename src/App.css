@@ -3,18 +3,21 @@
   margin: 0;
   box-sizing: border-box;
 }
-
+html{
+  /* font-size: 50%; */
+}
 .main {
   background-color: #fed7aa;
-  width: 37.5rem;
+  min-width: 37.5rem;
   position: absolute;
   top: 1rem;
   left: 50%;
   transform: translate(-50%, -0%);
   margin: auto;
-  border-radius: .1875rem;
+  border-radius: 0.1875rem;
   padding: 1.5rem;
 }
+/* *------------------------------General components */
 
 .buttons {
   display: flex;
@@ -23,10 +26,10 @@
 }
 .button {
   background-color: #7c2d12;
-  padding: .75rem 1.5rem;
-  width: 9.375rem;
+  padding: 0.75rem 1.5rem;
+  min-width: 4.375rem;
   border: none;
-  border-radius: .1875rem;
+  border-radius: 0.1875rem;
   color: white;
   cursor: pointer;
   transition: all 0.5s;
@@ -34,13 +37,20 @@
 .button:hover {
   background-color: #431407;
 }
+
 input {
-  padding: .4375rem .4375rem;
-  border-radius: .1875rem;
-  border: .0625rem solid #7c2d12;
+  padding: 0.4375rem 0.4375rem;
+  border-radius: 0.1875rem;
+  border: 0.0625rem solid #7c2d12;
   display: block;
 }
-/* status section */
+
+img {
+  cursor: pointer;
+}
+
+/* *------------------------------status components */
+
 .heading {
   text-align: center;
   padding: 1.5rem;
@@ -48,19 +58,19 @@ input {
   color: #7c2d12;
 }
 .balance {
-  border: .0625rem solid #7c2d12;
-  border-radius: .1875rem;
+  border: 0.0625rem solid #7c2d12;
+  border-radius: 0.1875rem;
   padding: 1.5rem;
   display: grid;
   grid-template-columns: 2fr 1fr;
-  margin-bottom: .75rem;
+  margin-bottom: 0.75rem;
 }
 
 .balance__status {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  gap: .5rem;
+  gap: 0.5rem;
 }
 .balance__total {
   color: green;
@@ -71,16 +81,33 @@ input {
 .balance button {
   width: 100%;
 }
-.balance__input{
-  width: 167px;
-  height: 39px;
+.balance__input {
+  display: flex;
+  border: 1px solid #431407;
+  border-radius: 3px;
+  overflow: hidden;
+  background-color: #7c2d12;
 }
+.balance__input input {
+  width: 100%;
+  height: 100%;
+  border-radius: 0;
+}
+.balance__input img {
+  border-radius: 0;
+  transition: all 0.3s;
+}
+.balance__input img:hover {
+  transform: rotate(90deg);
+}
+/* *------------------------------expense form component*/
+
 .expense__form {
-  padding: .75rem 0 .75rem 1.5rem;
+  padding: 0.75rem 0 0.75rem 1.5rem;
   display: grid;
   grid-template-columns: 8.125rem 1fr auto;
   align-items: center;
-  gap: .75rem;
+  gap: 0.75rem;
   transition: all 0.5s;
 }
 .expense__form label {
@@ -91,11 +118,13 @@ input {
   grid-row: 1/4;
   display: flex;
   flex-direction: column;
-  gap: .3125rem;
+  gap: 0.3125rem;
 }
+/* *------------------------------Render record  component*/
+
 .records {
-  border: .0625rem solid #431407;
-  border-radius: .1875rem;
+  border: 0.0625rem solid #431407;
+  border-radius: 0.1875rem;
   height: 25rem;
   overflow: auto;
   margin-top: 1.5rem;
@@ -107,20 +136,17 @@ input {
 }
 .records td,
 th {
-  border-bottom: .0625rem solid #9a3412;
+  border-bottom: 0.0625rem solid #9a3412;
   text-align: center;
-  padding: .5rem;
+  padding: 0.5rem;
 }
 th {
   background-color: #fb923c;
+  cursor: pointer;
 }
 tr:hover {
   background-color: #fffbeb;
   transition: all 0.3s;
-}
-
-.action_icons img {
-  cursor: pointer;
 }
 
 .action__buttons {
@@ -129,9 +155,21 @@ tr:hover {
   justify-content: end;
 }
 
+/* * some animations */
 .hidden {
+  position: relative;
+  z-index: -999;
   opacity: 0;
   height: 0;
   padding: 0;
   margin: 0;
+}
+.table-input{
+  display: flex;
+  justify-content: center;
+}
+td input{
+  width: 60px;
+  text-align: center;
+  height: 25px
 }
