@@ -1,3 +1,5 @@
+/* eslint react/prop-types: 0 */
+
 export function RenderRecord({ records }) {
   return (
     <div className="records">
@@ -17,9 +19,9 @@ export function RenderRecord({ records }) {
               <tr key={i}>
                 <td>{i + 1}</td>
                 <td>{item.date}</td>
-                <td>{item.name}</td>
-                <td style={{ color: item.cost > 0 ? 'green' : 'red' }}>
-                  ${Math.abs(item.cost)}
+                <td>{item.expenseName}</td>
+                <td style={{ color: item.expenseCost > 0 ? 'green' : 'red' }}>
+                  ${Math.abs(item.expenseCost)}
                 </td>
                 <td className="action_icons">
                   <img src="edit.svg" alt="edit icon" />
