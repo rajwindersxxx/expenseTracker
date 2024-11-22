@@ -1,4 +1,3 @@
-import './App.css';
 import { BalanceTracker } from './BalanceTracker';
 /* eslint react/prop-types: 0 */
 
