@@ -2,19 +2,21 @@
 
 import { useState } from 'react';
 
-export function TableData({ item, index, onDeleteEntry, key }) {
+export function TableData({ item, index, onDeleteEntry, key, onUpdateEntry }) {
   const [editMode, setEditMode] = useState(false);
-  const [newExpenseName, setNewExpenseName] = useState('');
-  const [newExpenseCost, setNewExpenseCost] = useState('');
+  const [newExpenseName, setNewExpenseName] = useState(item.expenseName);
+  const [newExpenseCost, setNewExpenseCost] = useState();
 
   function handleEditEntry() {
     setEditMode(false);
-    if (newExpenseName === '' || newExpenseName === '') {
+    console.log(!newExpenseCost, !newExpenseName);
+
+    if (!newExpenseName || !newExpenseCost) {
       setNewExpenseName('');
       setNewExpenseCost('');
       return;
     }
-    console.log('edit done');
+    onUpdateEntry(item.id, newExpenseName, Number(newExpenseCost));
     setNewExpenseName('');
     setNewExpenseCost('');
   }

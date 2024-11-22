@@ -1,6 +1,11 @@
 /* eslint react/prop-types: 0 */
 import { TableData } from './_tableData';
-export function RenderRecord({ records, onSort, onDeleteEntry }) {
+export function RenderRecord({
+  records,
+  onSort,
+  onDeleteEntry,
+  onUpdateEntry,
+}) {
   return (
     <div className="records">
       <table>
@@ -21,6 +26,7 @@ export function RenderRecord({ records, onSort, onDeleteEntry }) {
                 onDeleteEntry={onDeleteEntry}
                 item={item}
                 index={i}
+                onUpdateEntry={onUpdateEntry}
               />
             );
           })}

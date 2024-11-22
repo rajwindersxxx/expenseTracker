@@ -70,6 +70,20 @@ export function BalanceTracker() {
     const deletedRecords = records.filter(item => item.id !== id);
     setRecords(deletedRecords);
   }
+  function handleUpdateEntry(id, newExpenseName, newExpenseCost) {
+    console.log(id, newExpenseName, newExpenseCost);
+    const recordAfterUpdate = records.map(item =>
+      item.id === id
+        ? {
+            ...item,
+            expenseName: newExpenseName,
+            expenseCost:
+              item.expenseCost > 0 ? newExpenseCost : -newExpenseCost,
+          }
+        : item
+    );
+    setRecords(recordAfterUpdate);
+  }
 
   return (
     <div className="main">
@@ -90,6 +104,7 @@ export function BalanceTracker() {
         records={records}
         onSort={handleSortRecords}
         onDeleteEntry={handleDeleteEntry}
+        onUpdateEntry={handleUpdateEntry}
       />
     </div>
   );
