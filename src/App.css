@@ -3,12 +3,15 @@
   margin: 0;
   box-sizing: border-box;
 }
-html{
+html {
   /* font-size: 50%; */
+}
+body {
+  background-color: #ffedd5;
 }
 .main {
   background-color: #fed7aa;
-  min-width: 37.5rem;
+  width: 35.5rem;
   position: absolute;
   top: 1rem;
   left: 50%;
@@ -16,6 +19,14 @@ html{
   margin: auto;
   border-radius: 0.1875rem;
   padding: 1.5rem;
+}
+/* internet help */
+input[type='number']::-webkit-inner-spin-button,
+input[type='number']::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  margin: 0;
 }
 /* *------------------------------General components */
 
@@ -49,7 +60,7 @@ img {
   cursor: pointer;
   transition: all 0.3s;
 }
-img:hover{
+img:hover {
   transform: scale(1.1);
 }
 
@@ -83,7 +94,7 @@ img:hover{
   color: red;
 }
 .balance button {
-  width: 100%;
+  min-width: 100%;
 }
 .balance__input {
   display: flex;
@@ -136,7 +147,7 @@ img:hover{
 .records table {
   font-family: arial, sans-serif;
   border-collapse: collapse;
-  width: 100%;
+  min-width: 100%;
 }
 .records td,
 th {
@@ -168,12 +179,13 @@ tr:hover {
   padding: 0;
   margin: 0;
 }
-.table-input{
+.table-input {
   display: flex;
+  gap: 8px;
   justify-content: center;
 }
-td input{
-  width: 60px;
+td input {
+  width: 100px;
   text-align: center;
-  height: 25px
+  height: 25px;
 }

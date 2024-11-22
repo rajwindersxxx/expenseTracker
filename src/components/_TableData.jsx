@@ -9,8 +9,6 @@ export function TableData({ item, index, onDeleteEntry, key, onUpdateEntry }) {
 
   function handleEditEntry() {
     setEditMode(false);
-    console.log(!newExpenseCost, !newExpenseName);
-
     if (!newExpenseName || !newExpenseCost) {
       setNewExpenseName('');
       setNewExpenseCost('');

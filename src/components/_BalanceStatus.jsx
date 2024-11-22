@@ -8,7 +8,6 @@ export function BalanceStatus({
   currBalance,
   onUpdateBalance,
 }) {
-  const [showBalanceInput, setShowBalanceInput] = useState(false);
   const [inputBalance, setInputBalance] = useState('');
   const totalExpense = records
     .filter(item => item.expenseCost < 0)
@@ -19,8 +18,8 @@ export function BalanceStatus({
 
   function handleUpdateBalance(e) {
     if (e.key === 'Enter' || e.type === 'click') {
-      setShowBalanceInput(false);
       onUpdateBalance('Income', inputBalance, true);
+      setInputBalance('');
     }
   }
   return (
@@ -33,22 +32,16 @@ export function BalanceStatus({
         <h3 className="balance__income">Total Income : $ {totalIncome}</h3>
       </div>
       <div className="submit__button">
-        {showBalanceInput ? (
-          <div className="balance__input">
-            <input
-              type="number"
-              placeholder="Enter Balance"
-              onKeyDown={handleUpdateBalance}
-              value={inputBalance}
-              onChange={e => setInputBalance(Number(e.target.value))}
-            />
-            <img src="add.svg" alt="add icon" onClick={handleUpdateBalance} />
-          </div>
-        ) : (
-          <Button onClick={() => setShowBalanceInput(true)}>
-            Update balance
-          </Button>
-        )}
+        <div className="balance__input">
+          <input
+            type="number"
+            placeholder="Add Balance"
+            onKeyDown={handleUpdateBalance}
+            value={inputBalance}
+            onChange={e => setInputBalance(Number(e.target.value))}
+          />
+          <img src="add.svg" alt="add icon" onClick={handleUpdateBalance} />
+        </div>
         <Button onClick={() => setShowForm(showForm => !showForm)}>
           Add expense
         </Button>
