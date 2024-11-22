@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
-import { AddExpenseForm } from './_AddExpenseForm';
-import { BalanceStatus } from './_BalanceStatus';
-import { RenderRecord } from './_RenderRecord';
+import { AddExpenseForm } from './AddExpenseForm';
+import { BalanceStatus } from './BalanceStatus';
+import { RenderRecord } from './RenderRecord';
 
 // * this it the main component *******
 

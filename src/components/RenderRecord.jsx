@@ -1,5 +1,5 @@
 /* eslint react/prop-types: 0 */
-import { TableData } from './_tableData';
+import { TableData } from './TableData';
 export function RenderRecord({
   records,
   onSort,

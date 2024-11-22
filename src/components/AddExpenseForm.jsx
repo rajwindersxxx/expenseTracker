@@ -1,8 +1,13 @@
 import { useState } from 'react';
-import { Button } from './_Button';
+import { Button } from './Button';
 /* eslint react/prop-types: 0 */
 
-export function AddExpenseForm({ showForm, currBalance, onSubmit , onDeleteAllEntry}) {
+export function AddExpenseForm({
+  showForm,
+  currBalance,
+  onSubmit,
+  onDeleteAllEntry,
+}) {
   const [expenseName, setExpenseName] = useState('');
   const [expenseCost, setExpenseCost] = useState('');
   const balanceLeft = currBalance - expenseCost;

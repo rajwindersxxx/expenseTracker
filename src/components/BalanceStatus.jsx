@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Button } from './_Button';
+import { Button } from './Button';
 /* eslint react/prop-types: 0 */
 
 export function BalanceStatus({
