@@ -19,7 +19,6 @@ export function BalanceTracker() {
   );
 
   function handleFormEntry(expenseName, expenseCost, isIncome = false) {
-    // !isIncome && setShowForm(false);
     if (!expenseName || !expenseCost) return;
     const date = new Date();
     const newEntry = {
@@ -38,7 +37,26 @@ export function BalanceTracker() {
     if (result) setRecords([]);
   }
 
+  function handleDeleteEntry(id) {
+    const deletedRecords = records.filter(item => item.id !== id);
+    setRecords(deletedRecords);
+  }
+
+  function handleUpdateEntry(id, newExpenseName, newExpenseCost) {
+    const recordAfterUpdate = records.map(item =>
+      item.id === id
+        ? {
+            ...item,
+            expenseName: newExpenseName,
+            expenseCost:
+              item.expenseCost > 0 ? newExpenseCost : -newExpenseCost,
+          }
+        : item
+    );
+    setRecords(recordAfterUpdate);
+  }
   function handleSortRecords(sortBy) {
+    
     if (sortBy === 'count' || sortBy === 'date') {
       const sortedRecords = records.slice().sort((a, b) => {
         return sortDirection ? b.id - a.id : a.id - b.id;
@@ -68,24 +86,8 @@ export function BalanceTracker() {
     }
   }
 
-  function handleDeleteEntry(id) {
-    const deletedRecords = records.filter(item => item.id !== id);
-    setRecords(deletedRecords);
-  }
-  function handleUpdateEntry(id, newExpenseName, newExpenseCost) {
-    console.log(id, newExpenseName, newExpenseCost);
-    const recordAfterUpdate = records.map(item =>
-      item.id === id
-        ? {
-            ...item,
-            expenseName: newExpenseName,
-            expenseCost:
-              item.expenseCost > 0 ? newExpenseCost : -newExpenseCost,
-          }
-        : item
-    );
-    setRecords(recordAfterUpdate);
-  }
+  
+
 
   return (
     <div className="main">

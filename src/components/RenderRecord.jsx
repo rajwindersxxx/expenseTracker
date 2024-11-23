@@ -9,7 +9,11 @@ export function RenderRecord({
   showForm,
 }) {
   const [editStatus, setCurrEditStatus] = useState(null);
-  useEffect(() => showForm && setCurrEditStatus(() => null), [showForm]);
+  useEffect(() => {
+    if (showForm) {
+        setCurrEditStatus(() => null);
+    }
+}, [showForm]);
 
   return (
     <div className="records">
