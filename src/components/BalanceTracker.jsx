@@ -7,17 +7,19 @@ import { RenderRecord } from './RenderRecord';
 
 export function BalanceTracker() {
   const [records, setRecords] = useState([]);
-  const [showForm, setShowForm] = useState(false);
   const [currBalance, setCurrBalance] = useState(0);
+  const [showForm, setShowForm] = useState(false);
   const [sortDirection, setSortDirection] = useState(true);
 
   // help form internet
-  useEffect(() => {
-    setCurrBalance(records.reduce((acc, item) => acc + item.expenseCost, 0));
-  }, [records]);
+  useEffect(
+    () =>
+      setCurrBalance(records.reduce((acc, item) => acc + item.expenseCost, 0)),
+    [records]
+  );
 
   function handleFormEntry(expenseName, expenseCost, isIncome = false) {
-    !isIncome && setShowForm(false);
+    // !isIncome && setShowForm(false);
     if (!expenseName || !expenseCost) return;
     const date = new Date();
     const newEntry = {
@@ -105,6 +107,7 @@ export function BalanceTracker() {
         onSort={handleSortRecords}
         onDeleteEntry={handleDeleteEntry}
         onUpdateEntry={handleUpdateEntry}
+        showForm={showForm}
       />
     </div>
   );

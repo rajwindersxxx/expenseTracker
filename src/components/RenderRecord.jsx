@@ -1,11 +1,16 @@
 /* eslint react/prop-types: 0 */
+import { useEffect, useState } from 'react';
 import { TableData } from './TableData';
 export function RenderRecord({
   records,
   onSort,
   onDeleteEntry,
   onUpdateEntry,
+  showForm,
 }) {
+  const [editStatus, setCurrEditStatus] = useState(null);
+  useEffect(() => showForm && setCurrEditStatus(() => null), [showForm]);
+
   return (
     <div className="records">
       <table>
@@ -23,10 +28,12 @@ export function RenderRecord({
             return (
               <TableData
                 key={item.uniqueId}
-                onDeleteEntry={onDeleteEntry}
                 item={item}
                 index={i}
+                currEdit={editStatus}
+                onDeleteEntry={onDeleteEntry}
                 onUpdateEntry={onUpdateEntry}
+                onEdit={setCurrEditStatus}
               />
             );
           })}
