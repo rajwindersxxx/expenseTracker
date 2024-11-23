@@ -9,7 +9,7 @@ export function Charts({ records }) {
         <h2>Summary</h2>
       </div>
       <PiChart records={records} />
-      <Graph />
+      {/* <Graph records={records}/> */}
     </div>
   );
 }

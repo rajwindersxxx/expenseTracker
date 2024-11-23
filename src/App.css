@@ -24,6 +24,8 @@ body {
 }
 
 .main__input {
+  display: flex;
+  flex-direction: column;
 }
 .main__charts {
   border: 1px solid #7c2d12;
@@ -148,9 +150,10 @@ img:hover {
 .records {
   border: 0.0625rem solid #431407;
   border-radius: 0.1875rem;
-  height: 25rem;
   overflow: auto;
   margin-top: 1.5rem;
+  /* height: 100%; */
+  height: 34rem;
 }
 .records table {
   font-family: arial, sans-serif;
@@ -205,6 +208,8 @@ td input {
   padding: 12px;
   gap: 12px;
 }
+
+/* *------------------------------PiChart  component*/
 .piChart__box {
   display: flex;
   justify-content: space-around;
@@ -215,10 +220,12 @@ td input {
   color: #3a2823;
   text-align: center;
 }
-.sub__heading{
+.sub__heading,
+.graph__heading {
   margin-bottom: 12px;
+  text-align: center;
 }
-.chart_description{
+.chart_description {
   align-self: center;
   text-align: center;
   /* border-bottom: 1px solid #3a2823; */
@@ -233,4 +240,12 @@ td input {
   position: absolute;
   top: -85px;
   left: -70px;
+}
+
+/* *------------------------------Graph  component*/
+
+.graph {
+  border: 1px solid #3a2823;
+  height: 100%;
+  padding: 24px 0;
 }
