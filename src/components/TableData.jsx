@@ -20,10 +20,14 @@ export function TableData({
   function handleEditEntry(e) {
     if (e.key === 'Enter' || e.type === 'click') {
       handleToggleEdit();
-      if (!newExpenseName || !newExpenseCost) return;
+      if (
+        newExpenseName === item.expenseName &&
+        newExpenseCost === item.expenseCost
+      )
+        return;
       onUpdateEntry(item.id, newExpenseName, Number(newExpenseCost));
-      setNewExpenseName('');
-      setNewExpenseCost('');
+      setNewExpenseName(newExpenseName);
+      setNewExpenseCost(newExpenseCost);
     }
   }
   function handleToggleEdit() {

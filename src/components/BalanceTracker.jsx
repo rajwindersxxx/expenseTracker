@@ -56,38 +56,26 @@ export function BalanceTracker() {
     setRecords(recordAfterUpdate);
   }
   function handleSortRecords(sortBy) {
-    
-    if (sortBy === 'count' || sortBy === 'date') {
-      const sortedRecords = records.slice().sort((a, b) => {
-        return sortDirection ? b.id - a.id : a.id - b.id;
-      });
-      setSortDirection(sortDirection => !sortDirection);
-      setRecords(sortedRecords);
-    }
+    if (sortBy === 'count' || sortBy === 'date') setRecords(sortRecords('id'));
 
-    if (sortBy === 'expenseCost') {
-      const sortedRecords = records.slice().sort((a, b) => {
-        return sortDirection
-          ? b.expenseCost - a.expenseCost
-          : a.expenseCost - b.expenseCost;
-      });
-      setSortDirection(sortDirection => !sortDirection);
-      setRecords(sortedRecords);
-    }
+    if (sortBy === 'expenseCost') setRecords(sortRecords('expenseCost'));
 
-    if (sortBy === 'expenseName') {
-      const sortedRecords = records.slice().sort((a, b) => {
-        return sortDirection
-          ? b.expenseName - a.expenseName
-          : a.expenseName - b.expenseName;
-      });
-      setSortDirection(sortDirection => !sortDirection);
-      setRecords(sortedRecords);
-    }
+    if (sortBy === 'expenseName') setRecords(sortRecords('expenseName', true));
   }
 
-  
-
+  function sortRecords(field, typeString = false) {
+    const sortedRecords = records.slice().sort((a, b) => {
+      if (typeString) {
+        return sortDirection
+          ? b[field].localeCompare(a[field])
+          : a[field].localeCompare(b[field]);
+      } else {
+        return sortDirection ? b[field] - a[field] : a[field] - b[field];
+      }
+    });
+    setSortDirection(sortDirection => !sortDirection);
+    return sortedRecords;
+  }
 
   return (
     <div className="main">
