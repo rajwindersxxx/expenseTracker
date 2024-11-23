@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { AddExpenseForm } from './AddExpenseForm';
 import { BalanceStatus } from './BalanceStatus';
 import { RenderRecord } from './RenderRecord';
-
+import { Charts } from './Charts';
 // * this it the main component *******
 
 export function BalanceTracker() {
@@ -80,25 +80,28 @@ export function BalanceTracker() {
   return (
     <div className="main">
       <h1 className="heading">Expense tracker</h1>
-      <BalanceStatus
-        records={records}
-        setShowForm={setShowForm}
-        currBalance={currBalance}
-        onUpdateBalance={handleFormEntry}
-      />
-      <AddExpenseForm
-        showForm={showForm}
-        currBalance={currBalance}
-        onSubmit={handleFormEntry}
-        onDeleteAllEntry={deleteAllEntry}
-      />
-      <RenderRecord
-        records={records}
-        onSort={handleSortRecords}
-        onDeleteEntry={handleDeleteEntry}
-        onUpdateEntry={handleUpdateEntry}
-        showForm={showForm}
-      />
+      <div className="main__input">
+        <BalanceStatus
+          records={records}
+          setShowForm={setShowForm}
+          currBalance={currBalance}
+          onUpdateBalance={handleFormEntry}
+        />
+        <AddExpenseForm
+          showForm={showForm}
+          currBalance={currBalance}
+          onSubmit={handleFormEntry}
+          onDeleteAllEntry={deleteAllEntry}
+        />
+        <RenderRecord
+          records={records}
+          onSort={handleSortRecords}
+          onDeleteEntry={handleDeleteEntry}
+          onUpdateEntry={handleUpdateEntry}
+          showForm={showForm}
+        />
+      </div>
+      <Charts records={records}/>
     </div>
   );
 }

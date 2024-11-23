@@ -11,14 +11,22 @@ body {
 }
 .main {
   background-color: #fed7aa;
-  width: 35.5rem;
-  position: absolute;
-  top: 1rem;
-  left: 50%;
-  transform: translate(-50%, -0%);
   margin: auto;
+  width: 75.5rem;
   border-radius: 0.1875rem;
   padding: 1.5rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+.heading {
+  grid-column: -1 /1;
+}
+
+.main__input {
+}
+.main__charts {
+  border: 1px solid #7c2d12;
 }
 /* internet help */
 input[type='number']::-webkit-inner-spin-button,
@@ -188,4 +196,41 @@ td input {
   width: 100px;
   text-align: center;
   height: 25px;
+}
+
+/* *------------------------------chart  component*/
+.main__charts {
+  display: flex;
+  flex-direction: column;
+  padding: 12px;
+  gap: 12px;
+}
+.piChart__box {
+  display: flex;
+  justify-content: space-around;
+  border: 1px solid #3a2823;
+}
+
+.chart__heading {
+  color: #3a2823;
+  text-align: center;
+}
+.sub__heading{
+  margin-bottom: 12px;
+}
+.chart_description{
+  align-self: center;
+  text-align: center;
+  /* border-bottom: 1px solid #3a2823; */
+}
+.pi_chart {
+  position: relative;
+  height: 240px;
+  width: 280px;
+  overflow: hidden;
+}
+.pi_chart-diagram {
+  position: absolute;
+  top: -85px;
+  left: -70px;
 }
