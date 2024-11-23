@@ -8,3 +8,6 @@ createRoot(document.getElementById('root')).render(
     <App />
   </StrictMode>
 );
+
+
+// future goal add charts and polish ui
