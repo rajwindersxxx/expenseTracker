@@ -55,7 +55,7 @@ export function AddExpenseForm({
       />
       <div className="submit__button">
         <Button onClick={handleForm}>Submit</Button>
-        <Button onClick={clearFields}>Clear Inputs</Button>
+        <Button onClick={clearFields}>Clear field</Button>
         <Button onClick={onDeleteAllEntry}>Delete all</Button>
       </div>
     </form>

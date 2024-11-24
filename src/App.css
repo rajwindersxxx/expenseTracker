@@ -54,6 +54,7 @@ input[type='number']::-webkit-outer-spin-button {
   color: white;
   cursor: pointer;
   transition: all 0.5s;
+  backface-visibility: hidden;
 }
 .button:hover {
   background-color: #431407;
@@ -130,13 +131,14 @@ img:hover {
 .expense__form {
   padding: 0.75rem 0 0.75rem 1.5rem;
   display: grid;
-  grid-template-columns: 8.125rem 1fr auto;
+  grid-template-columns: 8.125rem 150px 1fr;
   align-items: center;
   gap: 0.75rem;
   transition: all 0.5s;
+  
 }
 .expense__form label {
-  font-size: 1.25rem;
+  font-size: 1.1rem;
 }
 .submit__button {
   grid-column: -2/-1;
@@ -283,4 +285,5 @@ td input {
   .balance {
     grid-template-columns: 1fr 1fr;
   }
+
 }
