@@ -9,16 +9,16 @@ export function PiChart({ records }) {
     0
   );
   const date = new Date();
-  const dataToday = `${date.getDate()}-${date.getMonth()}-${date.getFullYear()}`;
+  const dateToday = `${date.getDate()}-${date.getMonth()}-${date.getFullYear()}`;
   useEffect(() => {
     setExpenseRecord(() =>
       records
-        .filter(item => item.expenseCost < 0 && item.date === dataToday)
+        .filter(item => item.expenseCost < 0 && item.date === dateToday)
         .map(item => {
           return { name: item.expenseName, value: -item.expenseCost };
         })
     );
-  }, [records]);
+  }, [records, dateToday]);
 
   return (
     <div className="piChart__box">
