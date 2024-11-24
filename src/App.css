@@ -12,12 +12,12 @@ body {
 .main {
   background-color: #fed7aa;
   margin: auto;
-  width: 75.5rem;
+  max-width: 65.5rem;
   border-radius: 0.1875rem;
   padding: 1.5rem;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 24px;
+  gap: 1.5rem;
 }
 .heading {
   grid-column: -1 /1;
@@ -28,7 +28,7 @@ body {
   flex-direction: column;
 }
 .main__charts {
-  border: 1px solid #7c2d12;
+  border: 0.0625rem solid #7c2d12;
 }
 /* internet help */
 input[type='number']::-webkit-inner-spin-button,
@@ -108,8 +108,8 @@ img:hover {
 }
 .balance__input {
   display: flex;
-  border: 1px solid #431407;
-  border-radius: 3px;
+  border: 0.0625rem solid #431407;
+  border-radius: 0.1875rem;
   overflow: hidden;
   background-color: #7c2d12;
 }
@@ -192,28 +192,28 @@ tr:hover {
 }
 .table-input {
   display: flex;
-  gap: 8px;
+  gap: 0.5rem;
   justify-content: center;
 }
 td input {
-  width: 100px;
+  width: 6.25rem;
   text-align: center;
-  height: 25px;
+  height: 1.5625rem;
 }
 
 /* *------------------------------chart  component*/
 .main__charts {
   display: flex;
   flex-direction: column;
-  padding: 12px;
-  gap: 12px;
+  padding: 0.75rem;
+  gap: 0.75rem;
 }
 
 /* *------------------------------PiChart  component*/
 .piChart__box {
   display: flex;
   justify-content: space-around;
-  border: 1px solid #3a2823;
+  border: 0.0625rem solid #3a2823;
 }
 
 .chart__heading {
@@ -222,36 +222,64 @@ td input {
 }
 .sub__heading,
 .graph__heading {
-  margin-bottom: 12px;
+  margin-bottom: 0.75rem;
   text-align: center;
 }
 .chart_description {
   align-self: center;
   text-align: center;
-  /* border-bottom: 1px solid #3a2823; */
+  /* border-bottom: .0625rem solid #3a2823; */
 }
 .pi_chart {
   position: relative;
-  height: 240px;
-  width: 280px;
-  overflow: hidden;
+  height: 15rem;
+  width: 17.5rem;
+  /* overflow: hidden; */
 }
 .pi_chart-diagram {
   position: absolute;
-  top: -85px;
-  left: -70px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
-.noDataError{
+.noDataError {
   position: absolute;
   top: 45%;
   left: 50%;
   transform: translate(-50%, -50%);
-  font-size: 20px;
+  font-size: 1.25rem;
 }
 /* *------------------------------Graph  component*/
 
 .graph {
-  border: 1px solid #3a2823;
+  border: 0.0625rem solid #3a2823;
   height: 100%;
-  padding: 24px 0;
+  padding: 1.5rem 0;
+}
+
+@media screen and (max-width: 57.25rem) {
+  .main {
+    /* background-color: #fed7aa;
+    margin: auto;
+    border-radius: 0.1875rem;
+    padding: 1.5rem;
+    display: grid; */
+    width: 100%;
+    grid-template-columns: 1fr;
+    /* gap: 1.5rem; */
+  }
+}
+
+@media screen and (max-width: 26.5625rem) {
+  html {
+    font-size: 70%;
+  }
+  .piChart__box {
+    flex-direction: column;
+    align-items: center;
+    padding: 24px 0;
+  }
+  .balance {
+    grid-template-columns: 1fr 1fr;
+  }
 }
