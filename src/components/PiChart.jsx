@@ -3,7 +3,7 @@ import { PieChart, Pie, Tooltip } from 'recharts';
 /* eslint react/prop-types: 0 */
 
 export function PiChart({ records }) {
-  const [expenseRecords, setExpenseRecord] = useState();
+  const [expenseRecords, setExpenseRecord] = useState([]);
   const expenseToday = expenseRecords?.reduce(
     (acc, item) => (acc += item.value),
     0
@@ -27,21 +27,25 @@ export function PiChart({ records }) {
         <h2 style={{ color: 'red' }}>${expenseToday}</h2>
       </div>
       <div className="pi_chart">
-        <div className="pi_chart-diagram">
-          <PieChart width={350} height={320}>
-            <Pie
-              dataKey="value"
-              isAnimationActive={true}
-              data={expenseRecords}
-              cx={200}
-              cy={200}
-              outerRadius={80}
-              fill="#7c2d12"
-              label
-            />
-            <Tooltip />
-          </PieChart>
-        </div>
+        {expenseRecords.length > 0 ? (
+          <div className="pi_chart-diagram">
+            <PieChart width={350} height={320}>
+              <Pie
+                dataKey="value"
+                isAnimationActive={true}
+                data={expenseRecords}
+                cx={200}
+                cy={200}
+                outerRadius={80}
+                fill="#7c2d12"
+                label
+              />
+              <Tooltip />
+            </PieChart>
+          </div>
+        ) : (
+          <div className='noDataError'>No Expense yet</div>
+        )}
       </div>
     </div>
   );

@@ -6,12 +6,19 @@ import { Charts } from './Charts';
 // * this it the main component *******
 
 export function BalanceTracker() {
-  const [records, setRecords] = useState([]);
+  const [records, setRecords] = useState(() => {
+    const storedRecord = localStorage.getItem('records');
+    return storedRecord ? JSON.parse(storedRecord) : [];
+  });
   const [currBalance, setCurrBalance] = useState(0);
   const [showForm, setShowForm] = useState(false);
   const [sortDirection, setSortDirection] = useState(true);
 
   // help form internet
+  useEffect(() => {
+    localStorage.setItem('records', JSON.stringify(records));
+  }, [records]);
+
   useEffect(
     () =>
       setCurrBalance(records.reduce((acc, item) => acc + item.expenseCost, 0)),
@@ -101,7 +108,7 @@ export function BalanceTracker() {
           showForm={showForm}
         />
       </div>
-      <Charts records={records}/>
+      <Charts records={records} />
     </div>
   );
 }

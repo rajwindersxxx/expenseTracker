@@ -6,7 +6,6 @@ export function TableData({
   item,
   index,
   onDeleteEntry,
-  key,
   onUpdateEntry,
   onEdit,
   currEdit,
@@ -35,7 +34,9 @@ export function TableData({
   }
 
   return (
-    <tr key={key} style={{ color: item.expenseCost > 0 ? 'green' : 'red' }}>
+    <tr
+      style={{ color: item.expenseCost > 0 ? 'green' : 'red' }}
+    >
       <td>{index + 1}</td>
       <td>{item.date}</td>
       <td>
