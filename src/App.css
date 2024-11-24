@@ -248,6 +248,7 @@ td input {
   left: 50%;
   transform: translate(-50%, -50%);
   font-size: 1.25rem;
+  text-align: center;
 }
 /* *------------------------------Graph  component*/
 
