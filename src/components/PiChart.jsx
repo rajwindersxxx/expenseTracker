@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { PieChart, Pie, Tooltip, ResponsiveContainer } from 'recharts';
+import { PieChart, Pie, Tooltip } from 'recharts';
 /* eslint react/prop-types: 0 */
 
 export function PiChart({ records }) {
@@ -29,21 +29,19 @@ export function PiChart({ records }) {
       <div className="pi_chart">
         {expenseRecords.length > 0 ? (
           <div className="pi_chart-diagram">
-            {/* <ResponsiveContainer width="100%" height="100%"> */}
-              <PieChart width={400} height={400}>
-                <Pie
-                  dataKey="value"
-                  isAnimationActive={true}
-                  data={expenseRecords}
-                  cx={200}
-                  cy={200}
-                  outerRadius={80}
-                  fill="#7c2d12"
-                  label
-                />
-                <Tooltip />
-              </PieChart>
-            {/* </ResponsiveContainer> */}
+            <PieChart width={400} height={400}>
+              <Pie
+                dataKey="value"
+                isAnimationActive={true}
+                data={expenseRecords}
+                cx={200}
+                cy={200}
+                outerRadius={80}
+                fill="#7c2d12"
+                label
+              />
+              <Tooltip />
+            </PieChart>
           </div>
         ) : (
           <div className="noDataError">No Expense yet</div>

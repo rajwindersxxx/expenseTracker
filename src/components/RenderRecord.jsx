@@ -1,4 +1,3 @@
-/* eslint react/prop-types: 0 */
 import { useEffect, useState } from 'react';
 import { TableData } from './TableData';
 export function RenderRecord({
@@ -11,9 +10,9 @@ export function RenderRecord({
   const [editStatus, setCurrEditStatus] = useState(null);
   useEffect(() => {
     if (showForm) {
-        setCurrEditStatus(() => null);
+      setCurrEditStatus(() => null);
     }
-}, [showForm]);
+  }, [showForm]);
 
   return (
     <div className="records">

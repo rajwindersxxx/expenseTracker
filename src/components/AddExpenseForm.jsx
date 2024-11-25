@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { Button } from './Button';
-/* eslint react/prop-types: 0 */
 
 export function AddExpenseForm({
   showForm,
@@ -13,10 +12,8 @@ export function AddExpenseForm({
   const balanceLeft = currBalance - expenseCost;
 
   function handleForm(e) {
-    e.preventDefault();
     onSubmit(expenseName, expenseCost);
-    setExpenseCost('');
-    setExpenseName('');
+    clearFields(e);
   }
 
   function clearFields(e) {

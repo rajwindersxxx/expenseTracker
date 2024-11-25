@@ -1,5 +1,3 @@
-/* eslint react/prop-types: 0 */
-
 import { useState } from 'react';
 
 export function TableData({
@@ -34,9 +32,7 @@ export function TableData({
   }
 
   return (
-    <tr
-      style={{ color: item.expenseCost > 0 ? 'green' : 'red' }}
-    >
+    <tr style={{ color: item.expenseCost > 0 ? 'green' : 'red' }}>
       <td>{index + 1}</td>
       <td>{item.date}</td>
       <td>

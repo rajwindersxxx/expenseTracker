@@ -1,4 +1,3 @@
-/* eslint react/prop-types: 0 */
 
 export function Button({ children, onClick }) {
   return (
