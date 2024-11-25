@@ -1,4 +1,4 @@
-// import { Graph } from './Graph';
+import { Graph } from './Graph';
 import { PiChart } from './PiChart';
 /* eslint react/prop-types: 0 */
 
@@ -9,7 +9,7 @@ export function Charts({ records }) {
         <h2>Summary</h2>
       </div>
       <PiChart records={records} />
-      {/* <Graph records={records}/> */}
+      <Graph records={records}/>
     </div>
   );
 }

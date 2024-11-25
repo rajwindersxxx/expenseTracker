@@ -3,6 +3,7 @@ import { AddExpenseForm } from './AddExpenseForm';
 import { BalanceStatus } from './BalanceStatus';
 import { RenderRecord } from './RenderRecord';
 import { Charts } from './Charts';
+
 // * this it the main component *******
 
 export function BalanceTracker() {
