@@ -11,7 +11,7 @@ body {
 }
 .main {
   background-color: #fed7aa;
-  margin: auto;
+  margin: 24px auto;
   max-width: 65.5rem;
   border-radius: 0.1875rem;
   padding: 1.5rem;
