@@ -3,28 +3,35 @@ import { PieChart, Pie, Tooltip } from 'recharts';
 import { DatePicker } from './DatePicker';
 /* eslint react/prop-types: 0 */
 
-export function PiChart({ records , setSelectedDate , selectedDate}) {
+export function PiChart({ records, setSelectedDate, selectedDate }) {
   const [expenseRecords, setExpenseRecord] = useState([]);
   const expenseToday = expenseRecords?.reduce(
     (acc, item) => (acc += item.value),
     0
   );
   const date = new Date();
-  const dateToday = `${date.getDate()}-${date.getMonth()}-${date.getFullYear()}`;
+  const dateToday = `${date.toISOString().slice(0, 10)}`;
   useEffect(() => {
     setExpenseRecord(() =>
       records
-        .filter((item) => item.expenseCost < 0 && item.date === dateToday)
+        .filter(
+          (item) =>
+            item.expenseCost < 0 &&
+            item.date === `${selectedDate ? 'selectedDate' : dateToday}`
+        )
         .map((item) => {
           return { name: item.expenseName, value: -item.expenseCost };
         })
     );
-  }, [records, dateToday]);
+  }, [dateToday, records, selectedDate]);
 
   return (
     <div className="piChart__box">
       <div className="chart_description">
-        <DatePicker setSelectedDate={setSelectedDate}  selectedDate={selectedDate}/>
+        <DatePicker
+          setSelectedDate={setSelectedDate}
+          selectedDate={selectedDate}
+        />
         <h2 style={{ color: 'red' }}> ${expenseToday}</h2>
       </div>
       <div className="pi_chart">
@@ -45,7 +52,7 @@ export function PiChart({ records , setSelectedDate , selectedDate}) {
             </PieChart>
           </div>
         ) : (
-          <div className="noDataError">No Expense yet</div>
+          <div className="noDataError">Select date to show expense</div>
         )}
       </div>
     </div>

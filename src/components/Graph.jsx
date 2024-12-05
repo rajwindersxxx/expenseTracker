@@ -12,8 +12,9 @@ import { useState, useEffect } from 'react';
 
 export function Graph({ records }) {
   const [graphEntries, setGraphData] = useState();
+  let newRecords = records.sort((a, b) => a.id - b.id);
   useEffect(() => {
-    const graphData = records.reduce((acc, current) => {
+    const graphData = newRecords.reduce((acc, current) => {
       const date = current.date;
       const expense = current.expenseCost;
       if (expense < 0) {
