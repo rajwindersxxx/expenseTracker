@@ -3,16 +3,16 @@ import { AddExpenseForm } from './AddExpenseForm';
 import { BalanceStatus } from './BalanceStatus';
 import { RenderRecord } from './RenderRecord';
 import { Charts } from './Charts';
-import testData from '../testData';
+// import testData from '../testData';
 // * this it the main component *******
 
 export function BalanceTracker() {
-  const [records, setRecords] = useState(testData);
+  // const [records, setRecords] = useState(testData);
   const [selectedDate, setSelectedDate] = useState('');
-  // const [records, setRecords] = useState(() => {
-  //   const storedRecord = localStorage.getItem('records');
-  //   return storedRecord ? JSON.parse(storedRecord) : [];
-  // });
+  const [records, setRecords] = useState(() => {
+    const storedRecord = localStorage.getItem('records');
+    return storedRecord ? JSON.parse(storedRecord) : [];
+  });
   const [currBalance, setCurrBalance] = useState(0);
   const [showForm, setShowForm] = useState(false);
   const [sortDirection, setSortDirection] = useState(true);
@@ -33,7 +33,7 @@ export function BalanceTracker() {
     const date = new Date();
     const newEntry = {
       id: date.toISOString().replace(/[-:.TZ]/g, ''),
-      date: date.toISOString().slice(0,10),
+      date: date.toISOString().slice(0, 10),
       expenseName: expenseName,
       expenseCost: isIncome ? expenseCost : -expenseCost,
       uniqueId: crypto.randomUUID(),
@@ -110,7 +110,11 @@ export function BalanceTracker() {
           selectedDate={selectedDate}
         />
       </div>
-      <Charts records={records} setSelectedDate={setSelectedDate} selectedDate={selectedDate} />
+      <Charts
+        records={records}
+        setSelectedDate={setSelectedDate}
+        selectedDate={selectedDate}
+      />
     </div>
   );
 }
