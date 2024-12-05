@@ -29,7 +29,7 @@ export function Graph({ records }) {
     }, {});
 
     setGraphData(() => Object.values(graphData));
-  }, [records]);
+  }, [newRecords]);
   return (
     <div className="graph">
       <div>
