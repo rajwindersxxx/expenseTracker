@@ -6,7 +6,15 @@ export function RenderRecord({
   onDeleteEntry,
   onUpdateEntry,
   showForm,
+  selectedDate,
 }) {
+  let newRecords;
+  if (selectedDate) {
+    newRecords = records.filter((item) => item.date === selectedDate);
+  } else {
+    newRecords = records;
+  }
+
   const [editStatus, setCurrEditStatus] = useState(null);
   useEffect(() => {
     if (showForm) {
@@ -27,7 +35,7 @@ export function RenderRecord({
           </tr>
         </thead>
         <tbody>
-          {records.map((item, i) => {
+          {newRecords.map((item, i) => {
             return (
               <TableData
                 key={item.uniqueId}

@@ -3,14 +3,16 @@ import { AddExpenseForm } from './AddExpenseForm';
 import { BalanceStatus } from './BalanceStatus';
 import { RenderRecord } from './RenderRecord';
 import { Charts } from './Charts';
-
+import testData from '../testData';
 // * this it the main component *******
 
 export function BalanceTracker() {
-  const [records, setRecords] = useState(() => {
-    const storedRecord = localStorage.getItem('records');
-    return storedRecord ? JSON.parse(storedRecord) : [];
-  });
+  const [records, setRecords] = useState(testData);
+  const [selectedDate, setSelectedDate] = useState('');
+  // const [records, setRecords] = useState(() => {
+  //   const storedRecord = localStorage.getItem('records');
+  //   return storedRecord ? JSON.parse(storedRecord) : [];
+  // });
   const [currBalance, setCurrBalance] = useState(0);
   const [showForm, setShowForm] = useState(false);
   const [sortDirection, setSortDirection] = useState(true);
@@ -31,12 +33,12 @@ export function BalanceTracker() {
     const date = new Date();
     const newEntry = {
       id: date.toISOString().replace(/[-:.TZ]/g, ''),
-      date: `${date.getDate()}-${date.getMonth()}-${date.getFullYear()}`,
+      date: date.toISOString().slice(0,10),
       expenseName: expenseName,
       expenseCost: isIncome ? expenseCost : -expenseCost,
       uniqueId: crypto.randomUUID(),
     };
-    setRecords(records => [...records, newEntry]);
+    setRecords((records) => [...records, newEntry]);
   }
 
   function deleteAllEntry(e) {
@@ -46,12 +48,12 @@ export function BalanceTracker() {
   }
 
   function handleDeleteEntry(id) {
-    const deletedRecords = records.filter(item => item.id !== id);
+    const deletedRecords = records.filter((item) => item.id !== id);
     setRecords(deletedRecords);
   }
 
   function handleUpdateEntry(id, newExpenseName, newExpenseCost) {
-    const recordAfterUpdate = records.map(item =>
+    const recordAfterUpdate = records.map((item) =>
       item.id === id
         ? {
             ...item,
@@ -65,9 +67,7 @@ export function BalanceTracker() {
   }
   function handleSortRecords(sortBy) {
     if (sortBy === 'count' || sortBy === 'date') setRecords(sortRecords('id'));
-
     if (sortBy === 'expenseCost') setRecords(sortRecords('expenseCost'));
-
     if (sortBy === 'expenseName') setRecords(sortRecords('expenseName', true));
   }
 
@@ -81,7 +81,7 @@ export function BalanceTracker() {
         return sortDirection ? b[field] - a[field] : a[field] - b[field];
       }
     });
-    setSortDirection(sortDirection => !sortDirection);
+    setSortDirection((sortDirection) => !sortDirection);
     return sortedRecords;
   }
 
@@ -107,9 +107,10 @@ export function BalanceTracker() {
           onDeleteEntry={handleDeleteEntry}
           onUpdateEntry={handleUpdateEntry}
           showForm={showForm}
+          selectedDate={selectedDate}
         />
       </div>
-      <Charts records={records} />
+      <Charts records={records} setSelectedDate={setSelectedDate} selectedDate={selectedDate} />
     </div>
   );
 }
