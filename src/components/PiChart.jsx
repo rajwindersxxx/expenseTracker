@@ -11,13 +11,14 @@ export function PiChart({ records, setSelectedDate, selectedDate }) {
   );
   const date = new Date();
   const dateToday = `${date.toISOString().slice(0, 10)}`;
+  console.log(dateToday, selectedDate, records);
   useEffect(() => {
     setExpenseRecord(() =>
       records
         .filter(
           (item) =>
             item.expenseCost < 0 &&
-            item.date === `${selectedDate ? 'selectedDate' : dateToday}`
+            item.date === `${selectedDate ? selectedDate : dateToday}`
         )
         .map((item) => {
           return { name: item.expenseName, value: -item.expenseCost };
