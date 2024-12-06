@@ -10,13 +10,12 @@ import { useLocalStorage } from '../utils/hooks';
 import { Footer } from './Footer';
 import { InputBalance } from './InputBalance';
 
-
 export default function App() {
   const [records, setRecords] = useLocalStorage([], 'records');
   const [selectedDate, setSelectedDate] = useState('');
   const [currBalance, setCurrBalance] = useState(0);
   const [showForm, setShowForm] = useState(false);
-  let sortDirection = true;
+  const [sortDirection, setSortDirection] = useState(true);
 
   function handleFormEntry(expenseName, expenseCost, isIncome = false) {
     const date = new Date();
@@ -55,7 +54,12 @@ export default function App() {
   }
 
   function handleSortRecords(sortBy) {
-    setRecords(sortRecords(records, sortBy, sortDirection, true));
+    if (sortBy === 'expenseName') {
+      setRecords(sortRecords(records, sortBy, sortDirection, true));
+    } else {
+      setRecords(sortRecords(records, sortBy, sortDirection));
+    }
+    setSortDirection(!sortDirection);
   }
 
   useEffect(

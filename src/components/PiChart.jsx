@@ -33,7 +33,8 @@ export function PiChart({ records, setSelectedDate, selectedDate }) {
           setSelectedDate={setSelectedDate}
           selectedDate={selectedDate}
         />
-        <h2 style={{ color: 'red' }}> ${expenseToday}</h2>
+       
+        <h2 style={{ color: 'red' }}>  ${expenseToday}</h2>
       </div>
       <div className="pi_chart">
         {expenseRecords.length > 0 ? (
