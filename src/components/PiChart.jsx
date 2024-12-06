@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { PieChart, Pie, Tooltip } from 'recharts';
 import { DatePicker } from './DatePicker';
+import { formattedDate } from '../utils/helper';
 /* eslint react/prop-types: 0 */
 
 export function PiChart({ records, setSelectedDate, selectedDate }) {
@@ -9,9 +10,8 @@ export function PiChart({ records, setSelectedDate, selectedDate }) {
     (acc, item) => (acc += item.value),
     0
   );
-  const date = new Date();
-  const dateToday = `${date.toISOString().slice(0, 10)}`;
-  console.log(dateToday, selectedDate, records);
+
+  const dateToday = formattedDate();
   useEffect(() => {
     setExpenseRecord(() =>
       records

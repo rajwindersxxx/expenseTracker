@@ -12,6 +12,8 @@ export function AddExpenseForm({
   const balanceLeft = currBalance - expenseCost;
 
   function handleForm(e) {
+    if (!expenseName || !expenseCost) return;
+    
     onSubmit(expenseName, expenseCost);
     clearFields(e);
   }
@@ -26,14 +28,14 @@ export function AddExpenseForm({
       <label>Expense Name:</label>
       <input
         value={expenseName}
-        onChange={e => setExpenseName(e.target.value)}
+        onChange={(e) => setExpenseName(e.target.value)}
         type="text"
         placeholder="e.g Buy milk"
       />
       <label>Expense Cost:</label>
       <input
         value={expenseCost}
-        onChange={e =>
+        onChange={(e) =>
           setExpenseCost(
             Number(e.target.value) <= currBalance
               ? Number(e.target.value)

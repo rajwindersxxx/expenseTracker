@@ -28,7 +28,7 @@ export function RenderRecord({
         <thead>
           <tr>
             <th onClick={() => onSort('count')}>Count</th>
-            <th onClick={() => onSort('date')}>Date</th>
+            <th onClick={() => onSort('count')}>Date</th>
             <th onClick={() => onSort('expenseName')}>Expense</th>
             <th onClick={() => onSort('expenseCost')}>Cost</th>
             <th>Action</th>

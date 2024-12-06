@@ -1,11 +1,10 @@
 import { useState } from 'react';
 import { Button } from './Button';
-
 export function BalanceStatus({
   records,
-  setShowForm,
   currBalance,
   onUpdateBalance,
+  setShowForm
 }) {
   const [inputBalance, setInputBalance] = useState('');
   const totalExpense = records
