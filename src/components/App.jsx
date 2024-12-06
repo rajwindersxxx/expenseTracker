@@ -8,6 +8,8 @@ import { Graph } from './Graph';
 import { formattedDate, sortRecords } from '../utils/helper';
 import { useLocalStorage } from '../utils/hooks';
 import { Footer } from './Footer';
+import { InputBalance } from './InputBalance';
+
 
 export default function App() {
   const [records, setRecords] = useLocalStorage([], 'records');
@@ -66,12 +68,12 @@ export default function App() {
       <div className="main">
         <h1 className="heading">Expense tracker</h1>
         <div className="main__input">
-          <BalanceStatus
-            records={records}
-            setShowForm={setShowForm}
-            currBalance={currBalance}
-            onUpdateBalance={handleFormEntry}
-          > </BalanceStatus>
+          <BalanceStatus records={records} currBalance={currBalance}>
+            <InputBalance
+              onUpdateBalance={handleFormEntry}
+              setShowForm={setShowForm}
+            />
+          </BalanceStatus>
           <AddExpenseForm
             showForm={showForm}
             currBalance={currBalance}

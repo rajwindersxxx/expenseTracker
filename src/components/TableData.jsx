@@ -8,7 +8,6 @@ export function TableData({
   onEdit,
   currEdit,
 }) {
-  // const [editMode, setEditMode] = useState(index === currEdit);
   const editMode = index === currEdit;
   const [newExpenseName, setNewExpenseName] = useState(item.expenseName);
   const [newExpenseCost, setNewExpenseCost] = useState(
